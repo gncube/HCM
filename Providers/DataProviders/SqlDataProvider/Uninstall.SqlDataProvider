@@ -1,0 +1,11 @@
+﻿IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Items]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Items]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Category]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Category]
+GO
+
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}[HCM_CategoryListHierarchical]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}[HCM_CategoryListHierarchical]
+GO

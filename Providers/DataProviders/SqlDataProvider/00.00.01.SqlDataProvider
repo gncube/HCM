@@ -1,0 +1,171 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Items]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Items]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Starter]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Starter]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Starter](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](50) NOT NULL,
+	[LastName] [nvarchar](100) NOT NULL,
+	[JobTitle] [nvarchar](200) NULL,
+	[CategoryId] [int] NULL,
+	[DepartmentId] [int] NULL,
+	[LocationId] [int] NULL,
+	[AssignedUserId] [int] NULL,
+	[ModuleId] [int] NOT NULL,
+	[CreatedOnDate] [datetime] NOT NULL,
+	[CreatedByUserId] [int] NOT NULL,
+	[LastModifiedOnDate] [datetime] NOT NULL,
+	[LastModifiedByUserId] [int] NOT NULL,
+	[IsDeleted] [bit] NULL,
+	[StartDate] [datetime] NULL,
+	[EndDate] [datetime] NULL,
+ CONSTRAINT [PK_HCM_Starter] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Category]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Category]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Category](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Description] [nvarchar](250) NOT NULL,
+	[CategoryParentId] [int] NULL,
+	[ViewOrder] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Category] ADD  DEFAULT ((0)) FOR [CategoryParentId]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Category] ADD  DEFAULT ((0)) FOR [ViewOrder]
+GO
+
+/************************************************************/
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}{objectQualifier}[HCM_CategoryListHierarchical]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}[HCM_CategoryListHierarchical]
+GO
+
+CREATE PROCEDURE {databaseOwner}{objectQualifier}[HCM_CategoryListHierarchical]
+(
+	@ModuleID	int,
+	@OnlyUsedCategories   bit
+)
+AS
+BEGIN
+	WITH cte ([CategoryParentId], [CategoryId], [ModuleId], [CategoryName], [CategoryDescription], [Level], [ViewOrder], [Sort] )
+	AS
+	(
+		-- Anchor member definition
+		SELECT e.CategoryParentId, e.Id, e.ModuleId,  e.Name, e.Description, 0 AS [Level], e.ViewOrder, 
+			RIGHT(REPLICATE('0', 8) + CAST(e.ViewOrder AS VARCHAR(MAX)),8) as [Sort]
+		FROM {databaseOwner}{objectQualifier}[HCM_Category] AS e
+		WHERE e.CategoryParentId IS NULL
+		UNION ALL
+		-- Recursive member definition
+		SELECT e.CategoryParentId, e.Id, e.ModuleId, e.Name, e.Description, [Level] + 1 AS [Level], e.ViewOrder, 
+		   CAST(d.Sort + '/' + 
+				RIGHT(REPLICATE('0', 8) + CAST(e.CategoryParentId AS VARCHAR(MAX)),8) + '-' +  
+				RIGHT(REPLICATE('0', 3) + CAST(e.ViewOrder AS VARCHAR(MAX)) ,3)
+		   AS VARCHAR(MAX)) AS [Sort]
+		FROM {databaseOwner}{objectQualifier}[HCM_Category] AS e
+		INNER JOIN cte AS d
+			ON e.CategoryParentId = d.CategoryId
+
+	)
+	-- Statement that executes the CTE
+	SELECT CASE WHEN cte.CategoryParentId IS NULL THEN 0 ELSE cte.CategoryParentId END AS [CategoryParentId], [CategoryId], [ModuleId], [CategoryName], [categoryDescription], [Level], [ViewOrder]
+	FROM cte 
+	WHERE cte.ModuleId =  @ModuleId
+	AND (cte.CategoryId IN (SELECT CategoryId FROM {databaseOwner}{objectQualifier}[HCM_Category]) OR @OnlyUsedCategories = 0)
+	order by [Sort]
+END
+
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Location]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Location]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Location](
+	[Id] [int] IDENTITY(1,1) NOT NULL,	
+	[Name] [nvarchar](100) NOT NULL,
+	[Description] [nvarchar](250) NULL,
+	[ModuleId] [int] NOT NULL,
+	[ViewOrder] [int] NOT NULL,	
+	[IsDeleted] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Location] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Location] ADD  DEFAULT ((0)) FOR [ViewOrder]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Department]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Department]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Department](
+	[Id] [int] IDENTITY(1,1) NOT NULL,	
+	[Name] [nvarchar](100) NOT NULL,
+	[Description] [nvarchar](250) NULL,
+	[ModuleId] [int] NOT NULL,
+	[ViewOrder] [int] NOT NULL,	
+	[IsDeleted] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Department] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Department] ADD  DEFAULT ((0)) FOR [ViewOrder]
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/
