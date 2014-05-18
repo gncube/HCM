@@ -40,22 +40,31 @@ namespace GND.Modules.HCM {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequiredFirstName;
         
         /// <summary>
-        /// plLocation control.
+        /// lblJobTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl plLocation;
+        protected global::DotNetNuke.UI.UserControls.LabelControl lblJobTitle;
         
         /// <summary>
-        /// drpLocation control.
+        /// txtJobTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtJobTitle;
+        
+        /// <summary>
+        /// valRequiredJobTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequiredJobTitle;
         
         /// <summary>
         /// lblAssignedUser control.
@@ -166,31 +175,22 @@ namespace GND.Modules.HCM {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequiredLastName;
         
         /// <summary>
-        /// lblJobTitle control.
+        /// plLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DotNetNuke.UI.UserControls.LabelControl lblJobTitle;
+        protected global::DotNetNuke.UI.UserControls.LabelControl plLocation;
         
         /// <summary>
-        /// txtJobTitle control.
+        /// drpLocation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtJobTitle;
-        
-        /// <summary>
-        /// valRequiredJobTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valRequiredJobTitle;
+        protected global::System.Web.UI.WebControls.DropDownList drpLocation;
         
         /// <summary>
         /// plCategoryField control.

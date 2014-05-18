@@ -60,8 +60,9 @@
                 </td>
 
                 <td>
-                    <asp:HyperLink ID="lnkEdit" CssClass="btn btn-success" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="EditItem.Text" Visible="false" Enabled="false" />
-                    <asp:LinkButton ID="lnkDelete" CssClass="btn btn-danger" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="DeleteItem.Text" Visible="false" Enabled="false" CommandName="Delete" />
+                    <asp:HyperLink ID="lnkEdit" CssClass="btn btn-info btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="EditItem.Text" Visible="false" Enabled="false" />
+                    <asp:HyperLink ID="lnkApprove" CssClass="btn btn-success btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="ApproveItem.Text" Visible="true" Enabled="false" />
+                    <asp:LinkButton ID="lnkDelete" CssClass="btn btn-danger btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="DeleteItem.Text" Visible="false" Enabled="false" CommandName="Delete" />
 
                 </td>
             </tr>

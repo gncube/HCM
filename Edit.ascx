@@ -12,18 +12,16 @@
         <div class="form-inline">
             <div class="col-md-6">
                 <div class="dnnFormItem">
-                    <dnn:label ID="lblFirstName" class="col-md-6 pull-left" runat="server" controlname="txtFirstName" />
+                    <dnn:label ID="lblFirstName" runat="server" controlname="txtFirstName" />
                     <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control col-md-6" />
                     <asp:RequiredFieldValidator ID="valRequiredFirstName" runat="server" resourcekey="valRequiredFirstName" ControlToValidate="txtFirstName" ErrorMessage="First name is required" CssClass="dnnFormMessage dnnFormError"></asp:RequiredFieldValidator>
                 </div>
-
                 <div class="dnnFormItem">
-                    <dnn:Label id="plLocation" runat="server" controlname="drpLocation">
-                    </dnn:Label>
-                    <asp:DropDownList ID="drpLocation" runat="server">
-                        <asp:ListItem Value="-1" resourcekey="SelectLocation">Select Location</asp:ListItem>
-                    </asp:DropDownList>
+                    <dnn:label ID="lblJobTitle" runat="server" controlname="txtJobTitle" />
+                    <asp:TextBox ID="txtJobTitle" runat="server" />
+                    <asp:RequiredFieldValidator ID="valRequiredJobTitle" runat="server" resourcekey="valRequiredJobTitle" ControlToValidate="txtJobTitle" ErrorMessage="Job title is required" CssClass="dnnFormMessage dnnFormError"></asp:RequiredFieldValidator>
                 </div>
+                
                 <div class="dnnFormItem">
                     <dnn:label ID="lblAssignedUser" runat="server" />
                     <asp:DropDownList ID="ddlAssignedUser" runat="server" />
@@ -50,9 +48,11 @@
                     <asp:RequiredFieldValidator ID="valRequiredLastName" runat="server" resourcekey="valRequiredLastName" ControlToValidate="txtLastName" ErrorMessage="Surname is required" CssClass="dnnFormMessage dnnFormError"></asp:RequiredFieldValidator>
                 </div>
                 <div class="dnnFormItem">
-                    <dnn:label ID="lblJobTitle" runat="server" controlname="txtJobTitle" />
-                    <asp:TextBox ID="txtJobTitle" runat="server" />
-                    <asp:RequiredFieldValidator ID="valRequiredJobTitle" runat="server" resourcekey="valRequiredJobTitle" ControlToValidate="txtJobTitle" ErrorMessage="Job title is required" CssClass="dnnFormMessage dnnFormError"></asp:RequiredFieldValidator>
+                    <dnn:Label id="plLocation" runat="server" controlname="drpLocation">
+                    </dnn:Label>
+                    <asp:DropDownList ID="drpLocation" runat="server">
+                        <asp:ListItem Value="-1" resourcekey="SelectLocation">Select Location</asp:ListItem>
+                    </asp:DropDownList>
                 </div>
                 <div class="dnnFormItem">
                     <dnn:Label id="plCategoryField" runat="server" controlname="drpCategory">
@@ -72,7 +72,7 @@
             </div>
 
         </div>
-</div>
+<%--</div>
 
 
 
@@ -86,7 +86,7 @@
 
 
 
-<%--<div class="dnnFormItem">
+<div class="dnnFormItem">
             <dnn:label ID="lblRoles" runat="server" />
             <asp:DropDownList ID="ddlRoles" runat="server" />
         </div>--%>

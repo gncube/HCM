@@ -80,6 +80,7 @@ namespace GND.Modules.HCM
         }
 
         #endregion
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -122,6 +123,8 @@ namespace GND.Modules.HCM
         {
             var t = new Components.Starter();
             var tc = new StarterController();
+            var a = new Components.Approval();
+            var ac = new ApprovalController();
 
             if (ItemId > 0)
             {
@@ -171,6 +174,21 @@ namespace GND.Modules.HCM
             else
             {
                 tc.CreateStarter(t);
+
+                a = new Approval()
+                {
+                    StarterId = t.Id,
+                    StatusId = 1,
+                    Comment = "The starter has just been created, by " + UserController.GetCurrentUserInfo().DisplayName,
+                    ModuleId = ModuleId,
+                    CreatedByUserId = UserId,
+                    CreatedOnDate = DateTime.Now,
+                    LastModifiedByUserId = UserId,
+                    LastModifiedOnDate = DateTime.Now,
+                    IsDeleted = false,
+                };
+
+                ac.CreateApproval(a);
             }
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }

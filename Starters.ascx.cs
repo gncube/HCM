@@ -93,6 +93,7 @@ namespace GND.Modules.HCM
             if (e.Item.ItemType == ListItemType.AlternatingItem || e.Item.ItemType == ListItemType.Item)
             {
                 var lnkEdit = e.Item.FindControl("lnkEdit") as HyperLink;
+                var lnkApprove = e.Item.FindControl("lnkApprove") as HyperLink;
                 var lnkDelete = e.Item.FindControl("lnkDelete") as LinkButton;
                 var lblCategory = e.Item.FindControl("lblCategory") as Label;
                 var lblDepartment = e.Item.FindControl("lblDepartment") as Label;
@@ -115,6 +116,14 @@ namespace GND.Modules.HCM
                     lnkEdit.Text = t.Id.ToString();
                     lnkEdit.NavigateUrl = EditUrl(string.Empty, string.Empty, string.Empty, "tid=" + t.Id);
                     //lnkEdit.NavigateUrl = EditUrl(string.Empty, string.Empty, string.Empty, "tid=" + t.Id);
+                }
+
+                if (lnkApprove != null)
+                {
+                    lnkApprove.Enabled = lnkApprove.Visible = true;
+                    lnkApprove.Text = t.Id.ToString();
+                    //lnkApprove.NavigateUrl = EditUrl(string.Empty, string.Empty, string.Empty, "tid=" + t.Id);
+                    lnkApprove.NavigateUrl = EditUrl(string.Empty, string.Empty, "EditApproval", "tid=" + t.Id);
                 }
 
                 if (IsEditable && lnkDelete != null)

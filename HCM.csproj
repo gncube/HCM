@@ -85,6 +85,8 @@
     <Compile Include="Categories.ascx.designer.cs">
       <DependentUpon>Categories.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Components\Approval.cs" />
+    <Compile Include="Components\ApprovalController.cs" />
     <Compile Include="Components\Category.cs" />
     <Compile Include="Components\CategoryController.cs" />
     <Compile Include="Components\Department.cs" />
@@ -102,6 +104,13 @@
     </Compile>
     <Compile Include="Departments.ascx.designer.cs">
       <DependentUpon>Departments.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="EditApproval.ascx.cs">
+      <DependentUpon>EditApproval.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditApproval.ascx.designer.cs">
+      <DependentUpon>EditApproval.ascx</DependentUpon>
     </Compile>
     <Compile Include="HCMModuleBase.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -153,6 +162,7 @@
     <Content Include="Documentation\Documentation.css" />
     <Content Include="Documentation\Documentation.html" />
     <Content Include="Edit.ascx" />
+    <Content Include="EditApproval.ascx" />
     <Content Include="License.txt" />
     <Content Include="Locations.ascx" />
     <Content Include="module.css" />
@@ -193,6 +203,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_LocalResources\Departments.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\EditApproval.resx">
+      <LastGenOutput>EditApproval.Designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
