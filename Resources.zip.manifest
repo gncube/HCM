@@ -2,6 +2,10 @@
   <files>
     <file>
       <path />
+      <name>Approvals.ascx</name>
+    </file>
+    <file>
+      <path />
       <name>Categories.ascx</name>
     </file>
     <file>
@@ -11,6 +15,10 @@
     <file>
       <path />
       <name>Edit.ascx</name>
+    </file>
+    <file>
+      <path />
+      <name>EditApproval.ascx</name>
     </file>
     <file>
       <path />
@@ -51,6 +59,10 @@
     <file>
       <path>App_LocalResources/</path>
       <name>Edit.ascx.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
+      <name>EditApproval.resx</name>
     </file>
     <file>
       <path>App_LocalResources/</path>
