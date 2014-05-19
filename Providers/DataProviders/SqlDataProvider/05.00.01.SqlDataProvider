@@ -1,0 +1,41 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Approval]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Approval]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Approval](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[StarterId] [int] NOT NULL,
+	[StatusId] [int] NOT NULL,
+	[Comment] [nvarchar](500) NOT NULL,
+	[ModuleId] [int] NOT NULL,
+	[CreatedOnDate] [datetime] NOT NULL,
+	[CreatedByUserId] [int] NOT NULL,
+	[LastModifiedOnDate] [datetime] NOT NULL,
+	[LastModifiedByUserId] [int] NOT NULL,
+	[IsDeleted] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Approval] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

@@ -11,14 +11,21 @@
 */
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web.UI.WebControls;
+using DotNetNuke.Entities.Portals;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Security.Roles.Internal;
 using DotNetNuke.Services.Localization;
+using DotNetNuke.Services.Messaging;
+using DotNetNuke.Services.Social.Messaging;
+using DotNetNuke.Services.Social.Notifications;
 using GND.Modules.HCM.Components;
 using DotNetNuke.Services.Exceptions;
+using MessagingController = DotNetNuke.Services.Social.Messaging.MessagingController;
 
 namespace GND.Modules.HCM
 {
@@ -44,18 +51,15 @@ namespace GND.Modules.HCM
         private void PopulateDropDownLists()
         {
             //get a list of users to assign the user to the Object
-            ddlAssignedUser.DataSource = UserController.GetUsers(PortalId);
+            RoleController rc = new RoleController();
+            ArrayList administrators = rc.GetUsersByRoleName(PortalId, "Administrators");
+
+            ddlAssignedUser.DataSource = administrators;
             ddlAssignedUser.DataTextField = "DisplayName";
-            ddlAssignedUser.DataValueField = "UserId";
+            ddlAssignedUser.DataValueField = "UserID";
             ddlAssignedUser.DataBind();
-
-            //ddlRoles.DataSource = TestableRoleController.Instance.GetRoles(PortalId);
-            //ddlRoles.DataTextField = "RoleName";
-            //ddlRoles.DataValueField = "RoleID";
-            //ddlRoles.DataBind();
-
-            //drpParentCategory.Items.Clear();
-            //drpParentCategory.Items.Add(new ListItem(Localization.GetString("SelectParentCategory.Text", this.LocalResourceFile), "-1"));
+            //ddlAssignedUser.Items.Insert(0, "Select User");
+            //ddlAssignedUser.SelectedValue = "Select User";
 
             CategoryController cats = new CategoryController();
             drpCategory.DataSource = cats.ListCategories(ModuleId, false);
@@ -76,6 +80,37 @@ namespace GND.Modules.HCM
             drpDepartment.DataTextField = "Name";
             drpDepartment.DataValueField = "Id";
             drpDepartment.DataBind();
+
+        }
+
+        private void SendNotification(string subject, string body, UserInfo recipient)
+        {
+            var notificationType = NotificationsController.Instance.GetNotificationType("HtmlNotification");
+            var portalSettings = PortalController.GetCurrentPortalSettings();
+            //var sender = UserController.GetUserById(portalSettings.PortalId, portalSettings.AdministratorId);
+            var sender = UserController.GetCurrentUserInfo();
+
+            var notification = new Notification { NotificationTypeID = notificationType.NotificationTypeId, Subject = subject, Body = body, IncludeDismissAction = true, SenderUserID = sender.UserID };
+            NotificationsController.Instance.SendNotification(notification, portalSettings.PortalId, null,
+                new List<UserInfo> {recipient});
+
+            
+        }
+
+
+        private void SendMessage(string subject, string body, UserInfo recipient)
+        {
+            var sender = UserController.GetCurrentUserInfo();
+            var message = new Message
+            {
+                Body = body,
+                From = sender.Email,
+                Subject = subject,
+                SenderUserID = sender.UserID,
+                To = recipient.Email
+            };
+
+            MessagingController.Instance.SendMessage(message, null, new List<UserInfo>{recipient}, null, recipient);
 
         }
 
@@ -117,6 +152,8 @@ namespace GND.Modules.HCM
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
         }
+
+
 
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -189,6 +226,11 @@ namespace GND.Modules.HCM
                 };
 
                 ac.CreateApproval(a);
+
+                SendNotification("Notification subject", "The following new user " + t.FirstName + " " + t.LastName + " has been created.", UserController.GetUserById(PortalId, t.CreatedByUserId));
+
+                SendMessage("New starter added to you", "The following new user " + t.FirstName + " " + t.LastName + " has been created.",  UserController.GetUserById(PortalId, t.AssignedUserId));
+
             }
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
