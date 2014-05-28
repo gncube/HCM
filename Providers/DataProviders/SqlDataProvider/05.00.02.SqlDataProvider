@@ -1,0 +1,43 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}HCM_Asset]') AND type in (N'U'))
+DROP TABLE {databaseOwner}[{objectQualifier}HCM_Asset]
+GO
+
+
+CREATE TABLE {databaseOwner}{objectQualifier}[HCM_Asset](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AssetParentId] [int] NULL,
+	[Name] [nvarchar](70) NOT NULL,
+	[Description] [nvarchar](500) NULL,
+	[ModuleId] [int] NOT NULL,
+	[Level] [int] NULL,
+	[ViewOrder] [int] NULL,
+	[CreatedOnDate] [datetime] NOT NULL,
+	[CreatedByUserId] [int] NOT NULL,
+	[LastModifiedOnDate] [datetime] NOT NULL,
+	[LastModifiedByUserId] [int] NOT NULL,
+	[IsDeleted] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE {databaseOwner}{objectQualifier}[HCM_Asset] ADD  DEFAULT ((0)) FOR [IsDeleted]
+GO
+
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

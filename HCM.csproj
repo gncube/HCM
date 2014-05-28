@@ -87,6 +87,8 @@
     </Compile>
     <Compile Include="Components\Approval.cs" />
     <Compile Include="Components\ApprovalController.cs" />
+    <Compile Include="Components\Asset.cs" />
+    <Compile Include="Components\AssetController.cs" />
     <Compile Include="Components\Category.cs" />
     <Compile Include="Components\CategoryController.cs" />
     <Compile Include="Components\Department.cs" />
@@ -147,13 +149,6 @@
     <Compile Include="Starters.ascx.designer.cs">
       <DependentUpon>Starters.ascx</DependentUpon>
     </Compile>
-    <Compile Include="View.ascx.cs">
-      <DependentUpon>View.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View.ascx.designer.cs">
-      <DependentUpon>View.ascx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Approvals.ascx" />
@@ -167,10 +162,10 @@
     <Content Include="Locations.ascx" />
     <Content Include="module.css" />
     <Content Include="Providers\DataProviders\SqlDataProvider\00.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\05.00.01.SqlDataProvider" />
     <Content Include="ReleaseNotes.txt" />
     <Content Include="Settings.ascx" />
     <Content Include="Starters.ascx" />
-    <Content Include="View.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="HCM.dnn" />
@@ -210,7 +205,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Providers\DataProviders\SqlDataProvider\05.00.01.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\05.00.02.SqlDataProvider" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

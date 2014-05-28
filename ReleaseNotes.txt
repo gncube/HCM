@@ -11,13 +11,16 @@
 		<b>Version CHANGEME</b><br /><br />
 	</p>
 	<p>Description about version.</p>
+
+	<h4>Release Features</h4>
+	<ul>
+			<li>Asset Management Added</li>
+			<li>Approval Log Added</li>
+	</ul>
 	
 	<h4>Bug Fixes</h4>
 	<ul>
-			<li>List</li>
-			<li>of</li>
-			<li>bug</li>
-			<li>fixes</li>
+			<li>Sorted the error on categories</li>
 	</ul>
 	
 </div>

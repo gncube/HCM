@@ -24,8 +24,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th>Starter Name</th>
                         <th>Job Title</th>
                         <th>Category</th>
                         <th>Department</th>
@@ -40,10 +39,8 @@
         <ItemTemplate>
             <tr>
                 <td></td>
-                <td>
-                    <asp:Label ID="lblFirstName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"FirstName").ToString() %>' /></td>
-                <td>
-                    <asp:Label ID="lblLastName" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"LastName").ToString() %>' /></td>
+                <td><asp:Label runat="server" ID="lblDisplayName" Text='<%# String.Format("{0} {1}", DataBinder.Eval(Container.DataItem, "FirstName").ToString(), DataBinder.Eval(Container.DataItem, "LastName").ToString()) %>'></asp:Label></td>
+                
                 <td>
                     <asp:Label ID="lblJobTitle" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"JobTitle").ToString() %>' /></td>
                 <td>
