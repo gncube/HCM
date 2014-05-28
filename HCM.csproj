@@ -100,6 +100,20 @@
     <Compile Include="Components\LocationController.cs" />
     <Compile Include="Components\Starter.cs" />
     <Compile Include="Components\StarterController.cs" />
+    <Compile Include="Controls\AddAsset.ascx.cs">
+      <DependentUpon>AddAsset.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\AddAsset.ascx.designer.cs">
+      <DependentUpon>AddAsset.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Assets.ascx.cs">
+      <DependentUpon>Assets.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Assets.ascx.designer.cs">
+      <DependentUpon>Assets.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Departments.ascx.cs">
       <DependentUpon>Departments.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,6 +167,8 @@
   <ItemGroup>
     <Content Include="Approvals.ascx" />
     <Content Include="Categories.ascx" />
+    <Content Include="Controls\AddAsset.ascx" />
+    <Content Include="Controls\Assets.ascx" />
     <Content Include="Departments.ascx" />
     <Content Include="Documentation\Documentation.css" />
     <Content Include="Documentation\Documentation.html" />
@@ -205,7 +221,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Providers\DataProviders\SqlDataProvider\05.00.02.SqlDataProvider" />
+    <Content Include="Providers\DataProviders\SqlDataProvider\05.00.03.SqlDataProvider" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\AddAsset.ascx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_LocalResources\Assets.ascx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

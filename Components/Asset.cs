@@ -70,6 +70,26 @@ namespace GND.Modules.HCM.Components
         /// <value>The view order.</value>
         public int ViewOrder { get; set; }
 
+        ///<summary>
+        /// An integer for the user id of the user who created the object
+        ///</summary>
+        public int CreatedByUserId { get; set; }
+
+        ///<summary>
+        /// An integer for the user id of the user who last updated the object
+        ///</summary>
+        public int LastModifiedByUserId { get; set; }
+
+        ///<summary>
+        /// The date the object was created
+        ///</summary>
+        public DateTime CreatedOnDate { get; set; }
+
+        ///<summary>
+        /// The date the object was updated
+        ///</summary>
+        public DateTime LastModifiedOnDate { get; set; }
+
         /// <summary>
         /// Gets or sets the view order between children of one node.
         /// </summary>

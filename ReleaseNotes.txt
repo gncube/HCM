@@ -4,17 +4,17 @@
 	<a href="mailto:gerald@gndsoftware.com">gerald@gndsoftware.com</a><br />
 	<a href=http://gndsoftware.com>http://gndsoftware.com</a><br />
 </p>
-<hr/>
+
 <div class="License">
 	<h3>About the HCM</h3>
 	<p class="Owner">
-		<b>Version CHANGEME</b><br /><br />
+		<b>Version CHANGEME</b>
 	</p>
 	<p>Description about version.</p>
 
 	<h4>Release Features</h4>
 	<ul>
-			<li>Asset Management Added</li>
+			<li>Line Manager Added</li>
 			<li>Approval Log Added</li>
 	</ul>
 	

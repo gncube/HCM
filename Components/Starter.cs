@@ -80,6 +80,11 @@ namespace GND.Modules.HCM.Components
         public int AssignedUserId { get; set; }
 
         ///<summary>
+        /// An integer with the user id of the line manager for the object
+        ///</summary>
+        public int LineManagerId { get; set; }
+
+        ///<summary>
         /// The ModuleId of where the object was created and gets displayed
         ///</summary>
         public int ModuleId { get; set; }
@@ -103,6 +108,7 @@ namespace GND.Modules.HCM.Components
         /// The date the object was updated
         ///</summary>
         public DateTime LastModifiedOnDate { get; set; }
+
         /// <summary>
         /// Gets or sets the visibility of the Faq-Item
         /// </summary>

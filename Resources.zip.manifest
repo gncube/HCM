@@ -46,6 +46,10 @@
     </file>
     <file>
       <path>App_LocalResources/</path>
+      <name>AddAsset.resx</name>
+    </file>
+    <file>
+      <path>App_LocalResources/</path>
       <name>Categories.ascx.resx</name>
     </file>
     <file>
@@ -75,6 +79,14 @@
     <file>
       <path>App_LocalResources/</path>
       <name>View.ascx.resx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>AddAsset.ascx</name>
+    </file>
+    <file>
+      <path>Controls/</path>
+      <name>Assets.ascx</name>
     </file>
     <file>
       <path>Documentation/</path>

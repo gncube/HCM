@@ -2,6 +2,7 @@
 <%@ Register TagPrefix="dnn" TagName="label" Src="~/controls/LabelControl.ascx" %>
 <%@ Import Namespace="DotNetNuke.Services.Localization" %>
 <%@ Register TagPrefix="dnn" Namespace="DotNetNuke.Web.UI.WebControls" Assembly="DotNetNuke.Web" %>
+<%@ Register src="Controls/AddAsset.ascx" tagname="AddAsset" tagprefix="uc1" %>
 <div class="dnnForm dnnEditBasicSettings" id="dnnEditBasicSettings">
     <div class="dnnFormExpandContent dnnRight "><a href="" class="hidden"><%=LocalizeString("ExpandAll")%></a></div>
 
@@ -102,6 +103,9 @@
     OnClick="btnSubmit_Click" resourcekey="btnSubmit" CssClass="dnnPrimaryAction" />
 <asp:LinkButton ID="btnCancel" runat="server"
     OnClick="btnCancel_Click" resourcekey="btnCancel" CssClass="dnnSecondaryAction" />
+
+<uc1:AddAsset ID="AddAsset1" runat="server" />
+
 
 <script language="javascript" type="text/javascript">
     /*globals jQuery, window, Sys */

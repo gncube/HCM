@@ -149,6 +149,7 @@ namespace GND.Modules.HCM
                             txtJobTitle.Text = t.JobTitle;
                             drpCategory.Items.FindByValue(t.CategoryId.ToString()).Selected = true;
                             ddlAssignedUser.Items.FindByValue(t.AssignedUserId.ToString()).Selected = true;
+                            ddlApprover.Items.FindByValue(t.LineManagerId.ToString()).Selected = true;
                             drpLocation.Items.FindByValue(t.LocationId.ToString()).Selected = true;
                             drpDepartment.Items.FindByValue(t.DepartmentId.ToString()).Selected = true;
                             dpStartDate.SelectedDate = t.StartDate;
@@ -184,6 +185,7 @@ namespace GND.Modules.HCM
                 t.LastModifiedByUserId = UserId;
                 t.LastModifiedOnDate = DateTime.Now;
                 t.AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue);
+                t.LineManagerId = Convert.ToInt32(ddlApprover.SelectedValue);
                 t.CategoryId = Convert.ToInt32(drpCategory.SelectedValue);
                 t.LocationId = Convert.ToInt32(drpLocation.SelectedValue);
                 t.DepartmentId = Convert.ToInt32(drpDepartment.SelectedValue);
@@ -195,6 +197,7 @@ namespace GND.Modules.HCM
                 t = new Starter()
                 {
                     AssignedUserId = Convert.ToInt32(ddlAssignedUser.SelectedValue),
+                    LineManagerId = Convert.ToInt32(ddlApprover.SelectedValue),
                     CreatedByUserId = UserId,
                     CategoryId = Convert.ToInt32(drpCategory.SelectedValue),
                     LocationId = Convert.ToInt32(drpLocation.SelectedValue),

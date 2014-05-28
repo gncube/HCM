@@ -117,94 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btnCancel.Text" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="cmdAddNew.Text" xml:space="preserve">
+    <value>Add New</value>
   </data>
-  <data name="btnSubmit.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="cmdGoBack.Text" xml:space="preserve">
+    <value>Go Back</value>
   </data>
-  <data name="ControlTitle_edit.Text" xml:space="preserve">
-    <value>Edit New Starter</value>
+  <data name="plDescription.Help" xml:space="preserve">
+    <value>Please enter description</value>
   </data>
-  <data name="lblAssignedUser.Help" xml:space="preserve">
-    <value>Choose a user to assign this object to.</value>
-  </data>
-  <data name="lblAssignedUser.Text" xml:space="preserve">
-    <value>Assigned User</value>
-  </data>
-  <data name="lblDescription.Help" xml:space="preserve">
-    <value>Enter a Description for your Item</value>
-  </data>
-  <data name="lblDescription.Text" xml:space="preserve">
+  <data name="plDescription.Text" xml:space="preserve">
     <value>Description</value>
   </data>
-  <data name="lblFirstName.Help" xml:space="preserve">
-    <value>Enter the First Name for your Starter</value>
+  <data name="plName.Help" xml:space="preserve">
+    <value>Please enter department</value>
   </data>
-  <data name="lblFirstName.Text" xml:space="preserve">
-    <value>First Name</value>
-  </data>
-  <data name="BasicSettings.Text" xml:space="preserve">
-    <value>HCM Item Basic Settings</value>
-  </data>
-  <data name="ExpandAll.Text" xml:space="preserve">
-    <value>Expand All</value>
-  </data>
-  <data name="lblDepartment.Help" xml:space="preserve">
-    <value>Select department</value>
-  </data>
-  <data name="lblDepartment.Text" xml:space="preserve">
+  <data name="plName.Text" xml:space="preserve">
     <value>Department</value>
-  </data>
-  <data name="lblEndDate.Help" xml:space="preserve">
-    <value>Enter end date</value>
-  </data>
-  <data name="lblEndDate.Text" xml:space="preserve">
-    <value>End Date</value>
-  </data>
-  <data name="lblJobTitle.Help" xml:space="preserve">
-    <value>Enter job title</value>
-  </data>
-  <data name="lblJobTitle.Text" xml:space="preserve">
-    <value>Job Title</value>
-  </data>
-  <data name="lblLastName.Help" xml:space="preserve">
-    <value>Please enter the last name</value>
-  </data>
-  <data name="lblLastName.Text" xml:space="preserve">
-    <value>Last Name</value>
-  </data>
-  <data name="lblStartDate.Help" xml:space="preserve">
-    <value>Enter start date</value>
-  </data>
-  <data name="lblStartDate.Text" xml:space="preserve">
-    <value>Start Date</value>
-  </data>
-  <data name="plCategoryField.Help" xml:space="preserve">
-    <value>Select the category</value>
-  </data>
-  <data name="plCategoryField.Text" xml:space="preserve">
-    <value>Category</value>
-  </data>
-  <data name="plLocation.Help" xml:space="preserve">
-    <value>Select the location</value>
-  </data>
-  <data name="plLocation.Text" xml:space="preserve">
-    <value>Location</value>
-  </data>
-  <data name="SelectCategory.Text" xml:space="preserve">
-    <value>Select Category</value>
-  </data>
-  <data name="lblApprover.Help" xml:space="preserve">
-    <value>Select the authorising manager</value>
-  </data>
-  <data name="lblApprover.Text" xml:space="preserve">
-    <value>Authorising Manager</value>
-  </data>
-  <data name="lblAsset.Help" xml:space="preserve">
-    <value>Get the right asset</value>
-  </data>
-  <data name="lblAsset.Text" xml:space="preserve">
-    <value>Select Asset</value>
   </data>
 </root>

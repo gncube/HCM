@@ -68,7 +68,7 @@ namespace GND.Modules.HCM
                 actions.Add(GetNextActionID(), Localization.GetString("ManageCategories", LocalResourceFile), ModuleActionType.AddContent, "", "", EditUrl("Categories"), false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
                 actions.Add(GetNextActionID(), Localization.GetString("ManageLocations", LocalResourceFile), ModuleActionType.AddContent, "", "", EditUrl("Locations"), false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
                 actions.Add(GetNextActionID(), Localization.GetString("ManageDepartments", LocalResourceFile), ModuleActionType.AddContent, "", "", EditUrl("Departments"), false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
-                
+                actions.Add(GetNextActionID(), Localization.GetString("ManageAssets", LocalResourceFile), ModuleActionType.AddContent, "", "", EditUrl("Assets"), false, DotNetNuke.Security.SecurityAccessLevel.Edit, true, false);
                 return actions;
             }
         }

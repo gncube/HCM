@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="GND Software: HCM" type="Module" version="05.00.02">
+    <package name="GND Software: HCM" type="Module" version="05.00.03">
       <friendlyName>GND Software: HCM</friendlyName>
       <description>GND Software Ltd HCM module</description>
       <iconFile>Images/icon_extensions.gif</iconFile>
@@ -34,6 +34,11 @@
               <path>Providers\DataProviders\SqlDataProvider</path>
               <name>05.00.02.SqlDataProvider</name>
               <version>05.00.02</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>05.00.03.SqlDataProvider</name>
+              <version>05.00.03</version>
             </script>
             <script type="UnInstall">
               <path>Providers\DataProviders\SqlDataProvider</path>
@@ -108,6 +113,16 @@
                     <controlSrc>DesktopModules/HCM/Departments.ascx</controlSrc>
                     <supportsPartialRendering>False</supportsPartialRendering>
                     <controlTitle>Departments</controlTitle>
+                    <controlType>View</controlType>
+                    <iconFile />
+                    <helpUrl />
+                    <viewOrder>0</viewOrder>
+                  </moduleControl>
+                  <moduleControl>
+                    <controlKey>Assets</controlKey>
+                    <controlSrc>DesktopModules/HCM/Controls/Assets.ascx</controlSrc>
+                    <supportsPartialRendering>False</supportsPartialRendering>
+                    <controlTitle>Assets</controlTitle>
                     <controlType>View</controlType>
                     <iconFile />
                     <helpUrl />
