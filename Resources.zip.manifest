@@ -45,10 +45,6 @@
       <name>Starters.ascx</name>
     </file>
     <file>
-      <path />
-      <name>View.ascx</name>
-    </file>
-    <file>
       <path>App_LocalResources/</path>
       <name>Categories.ascx.resx</name>
     </file>

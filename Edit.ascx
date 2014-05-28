@@ -26,19 +26,17 @@
                     <dnn:label ID="lblAssignedUser" runat="server" />
                     <asp:DropDownList ID="ddlAssignedUser" runat="server" />
                 </div>
+                <div class="dnnFormItem">
+                    <dnn:label ID="lblApprover" runat="server" />
+                    <asp:DropDownList ID="ddlApprover" runat="server" />
+                </div>
                  <div class="dnnFormItem">
                     <dnn:Label ID="lblStartDate" runat="server" ControlName="dpStartDate" />
                     <dnn:DnnDatePicker ID="dpStartDate" runat="server" />
                     &nbsp;
         <asp:CompareValidator ID="valStartDate" resourcekey="valStartDate.ErrorMessage" Operator="DataTypeCheck" Type="Date" runat="server" Display="Dynamic" ControlToValidate="dpStartDate" CssClass="dnnFormMessage dnnFormError" />
                 </div>
-                <div class="dnnFormItem">
-                    <dnn:Label ID="lblEndDate" runat="server" ControlName="dpEndDate" />
-                    <dnn:DnnDatePicker ID="dpEndDate" runat="server" />
-                    &nbsp;
-        <asp:CompareValidator ID="valEndDate" resourcekey="valEndDate.ErrorMessage" Operator="DataTypeCheck" Type="Date" runat="server" Display="Dynamic" ControlToValidate="dpEndDate" CssClass="dnnFormMessage dnnFormError" />
-                    <asp:CompareValidator ID="val2EndDate" resourcekey="val2EndDate.ErrorMessage" Operator="GreaterThanEqual" Type="Date" runat="server" Display="Dynamic" ControlToValidate="dpEndDate" ControlToCompare="dpStartDate" CssClass="dnnFormMessage dnnFormError" />
-                </div>
+                
             </div>
 
             <div class="col-md-6">
@@ -67,6 +65,14 @@
                     <asp:DropDownList ID="drpDepartment" runat="server">
                         <asp:ListItem Value="-1" resourcekey="SelectDepartment">Select Department</asp:ListItem>
                     </asp:DropDownList>
+                </div>
+                
+                <div class="dnnFormItem">
+                    <dnn:Label ID="lblEndDate" runat="server" ControlName="dpEndDate" />
+                    <dnn:DnnDatePicker ID="dpEndDate" runat="server" />
+                    &nbsp;
+        <asp:CompareValidator ID="valEndDate" resourcekey="valEndDate.ErrorMessage" Operator="DataTypeCheck" Type="Date" runat="server" Display="Dynamic" ControlToValidate="dpEndDate" CssClass="dnnFormMessage dnnFormError" />
+                    <asp:CompareValidator ID="val2EndDate" resourcekey="val2EndDate.ErrorMessage" Operator="GreaterThanEqual" Type="Date" runat="server" Display="Dynamic" ControlToValidate="dpEndDate" ControlToCompare="dpStartDate" CssClass="dnnFormMessage dnnFormError" />
                 </div>
                
             </div>

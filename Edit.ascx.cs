@@ -53,19 +53,27 @@ namespace GND.Modules.HCM
             //get a list of users to assign the user to the Object
             RoleController rc = new RoleController();
             ArrayList administrators = rc.GetUsersByRoleName(PortalId, "Administrators");
+            ArrayList lineManagers = rc.GetUsersByRoleName(PortalId, "Subscribers");
 
             ddlAssignedUser.DataSource = administrators;
             ddlAssignedUser.DataTextField = "DisplayName";
             ddlAssignedUser.DataValueField = "UserID";
             ddlAssignedUser.DataBind();
-            //ddlAssignedUser.Items.Insert(0, "Select User");
+            ddlAssignedUser.Items.Insert(0, "Select Approving Manager");
             //ddlAssignedUser.SelectedValue = "Select User";
+
+            ddlApprover.DataSource = lineManagers;
+            ddlApprover.DataTextField = "DisplayName";
+            ddlApprover.DataValueField = "UserID";
+            ddlApprover.DataBind();
+            ddlApprover.Items.Insert(0, "Select Line Manager");
 
             CategoryController cats = new CategoryController();
             drpCategory.DataSource = cats.ListCategories(ModuleId, false);
             drpCategory.DataTextField = "Name";
             drpCategory.DataValueField = "Id";
             drpCategory.DataBind();
+            drpCategory.Items.Insert(0, "Select Category");
 
             drpLocation.Items.Clear();
             drpLocation.Items.Add(new ListItem(Localization.GetString("SelectLocation.Text", this.LocalResourceFile), "-1"));
@@ -74,12 +82,14 @@ namespace GND.Modules.HCM
             drpLocation.DataTextField = "Name";
             drpLocation.DataValueField = "Id";
             drpLocation.DataBind();
+            drpLocation.Items.Insert(0, "Select Location");
 
             DepartmentController dc = new DepartmentController();
             drpDepartment.DataSource = dc.GetDepartments(ModuleId);
             drpDepartment.DataTextField = "Name";
             drpDepartment.DataValueField = "Id";
             drpDepartment.DataBind();
+            drpDepartment.Items.Insert(0, "Select Department");
 
         }
 
@@ -207,6 +217,14 @@ namespace GND.Modules.HCM
             if (t.Id > 0)
             {
                 tc.UpdateStarter(t);
+
+                SendNotification("Notification subject", "The following new user " + t.FirstName + " " + t.LastName + " has been updated.", UserController.GetUserById(PortalId, t.CreatedByUserId));
+
+                SendNotification("Notification subject", "The following new user " + t.FirstName + " " + t.LastName + " has been updated.", UserController.GetUserById(PortalId, t.AssignedUserId));
+
+                SendMessage("New starter added to you", "The following new user " + t.FirstName + " " + t.LastName + " has been updated.", UserController.GetUserById(PortalId, t.AssignedUserId));
+
+                SendMessage("New starter added to you", "The following new user " + t.FirstName + " " + t.LastName + " has been updated.", UserController.GetUserById(PortalId, t.CreatedByUserId));
             }
             else
             {
@@ -229,7 +247,11 @@ namespace GND.Modules.HCM
 
                 SendNotification("Notification subject", "The following new user " + t.FirstName + " " + t.LastName + " has been created.", UserController.GetUserById(PortalId, t.CreatedByUserId));
 
+                SendNotification("Notification subject", "The following new user " + t.FirstName + " " + t.LastName + " has been created.", UserController.GetUserById(PortalId, t.AssignedUserId));
+
                 SendMessage("New starter added to you", "The following new user " + t.FirstName + " " + t.LastName + " has been created.",  UserController.GetUserById(PortalId, t.AssignedUserId));
+
+                SendMessage("New starter added to you", "The following new user " + t.FirstName + " " + t.LastName + " has been created.", UserController.GetUserById(PortalId, t.CreatedByUserId));
 
             }
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());

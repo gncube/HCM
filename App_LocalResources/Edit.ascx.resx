@@ -195,4 +195,10 @@
   <data name="SelectCategory.Text" xml:space="preserve">
     <value>Select Category</value>
   </data>
+  <data name="lblApprover.Help" xml:space="preserve">
+    <value>Select the authorising manager</value>
+  </data>
+  <data name="lblApprover.Text" xml:space="preserve">
+    <value>Authorising Manager</value>
+  </data>
 </root>
