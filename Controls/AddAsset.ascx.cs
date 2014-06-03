@@ -32,11 +32,12 @@ namespace GND.Modules.HCM.Controls
         {
             //get a list of assets
             AssetController ac = new AssetController();
-            cblAssets.DataSource = ac.GetAssets(ModuleId);
-            cblAssets.DataTextField = "Name";
-            cblAssets.DataValueField = "Id";
-            cblAssets.DataBind();
-            cblAssets.Items.Insert(0, "Select an asset");
+            ddlAssets.DataSource = ac.GetAssets(ModuleId);
+            ddlAssets.DataTextField = "Name";
+            ddlAssets.DataValueField = "Id";
+            ddlAssets.DataBind();
+            ddlAssets.Items.Insert(0, "Select an asset");
+
         }
 
         #endregion
@@ -45,8 +46,7 @@ namespace GND.Modules.HCM.Controls
         {
             try
             {
-
-                //Implement your edit logic for your module
+                 //Implement your edit logic for your module
                 if (!Page.IsPostBack)
                 {
                     PopulateCheckList();

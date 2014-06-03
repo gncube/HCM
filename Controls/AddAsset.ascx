@@ -8,7 +8,8 @@
     <fieldset>
         <div class="dnnFormItem">
             <dnn:label runat="server" ControlName="cblAssets" Text="Select Asset" HelpText="It's the name of the thing" />
-            <asp:DropDownList ID="cblAssets" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlAssets" runat="server"></asp:DropDownList>
+            <asp:SqlDataSource ID="sqlAssets" runat="server" ConnectionString="<%$ ConnectionStrings:SiteSqlServer %>" SelectCommand="SELECT [Id], [Name], [Description] FROM [HCM_Asset]"></asp:SqlDataSource>
         </div>
     </fieldset>
 </div>

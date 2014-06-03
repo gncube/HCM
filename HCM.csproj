@@ -98,6 +98,8 @@
     <Compile Include="Components\Item.cs" />
     <Compile Include="Components\Location.cs" />
     <Compile Include="Components\LocationController.cs" />
+    <Compile Include="Components\StaffAsset.cs" />
+    <Compile Include="Components\StaffAssetController.cs" />
     <Compile Include="Components\Starter.cs" />
     <Compile Include="Components\StarterController.cs" />
     <Compile Include="Controls\AddAsset.ascx.cs">

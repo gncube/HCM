@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -91,6 +92,21 @@ namespace GND.Modules.HCM
             drpDepartment.DataBind();
             drpDepartment.Items.Insert(0, "Select Department");
 
+            //get a list of assets
+            AssetController ac = new AssetController();
+            ddlAssets.DataSource = ac.GetAssets(ModuleId);
+            ddlAssets.DataTextField = "Name";
+            ddlAssets.DataValueField = "Id";
+            ddlAssets.DataBind();
+            ddlAssets.Items.Insert(0, "Select an asset");
+
+        }
+
+        private void PopulateAssets(int starterId)
+        {
+            var kc = new StaffAssetController();
+            rptAssets.DataSource = kc.GetStaffAssets(starterId);
+            rptAssets.DataBind();
         }
 
         private void SendNotification(string subject, string body, UserInfo recipient)
@@ -139,6 +155,8 @@ namespace GND.Modules.HCM
                     //ItemId is defined in the ItemModuleBase.cs file
                     if (ItemId > 0)
                     {
+                        pnlAssets.Visible = true;
+                        rptAssets.DataBind();
                         var tc = new StarterController();
 
                         var t = tc.GetStarter(ItemId, ModuleId);
@@ -154,6 +172,10 @@ namespace GND.Modules.HCM
                             drpDepartment.Items.FindByValue(t.DepartmentId.ToString()).Selected = true;
                             dpStartDate.SelectedDate = t.StartDate;
                             dpEndDate.SelectedDate = t.EndDate;
+
+                            var kc = new StaffAssetController();
+                            rptAssets.DataSource = kc.GetStaffAssets(t.Id);
+                            rptAssets.DataBind();
                         }
                     }
                 }
@@ -164,8 +186,7 @@ namespace GND.Modules.HCM
             }
         }
 
-
-
+        
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -264,5 +285,35 @@ namespace GND.Modules.HCM
         {
             Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
+
+        protected void cmdAddAsset_Click(object sender, EventArgs e)
+        {
+            var k = new StaffAsset();
+            var kc = new StaffAssetController();
+
+            
+                k = new StaffAsset()
+                {
+                    AssetId = Convert.ToInt32(ddlAssets.SelectedValue),
+                    StarterId = ItemId,
+                    ModuleId = ModuleId,
+                    CreatedByUserId = UserId,
+                    CreatedOnDate = DateTime.Now,
+                    LastModifiedByUserId = UserId,
+                    LastModifiedOnDate = DateTime.Now,
+                    Comment = "Asset has been added",
+                };
+            if (k.Id > 0)
+            { 
+                kc.UpdateStaffAsset(k);
+            }
+            else
+            {
+                kc.CreateStaffAsset(k);
+                PopulateAssets(k.Id);
+            }
+        }
+
+        
     }
 }

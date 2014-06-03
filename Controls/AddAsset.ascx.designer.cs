@@ -13,12 +13,21 @@ namespace GND.Modules.HCM.Controls {
     public partial class AddAsset {
         
         /// <summary>
-        /// cblAssets control.
+        /// ddlAssets control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cblAssets;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAssets;
+        
+        /// <summary>
+        /// sqlAssets control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sqlAssets;
     }
 }
