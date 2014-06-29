@@ -64,31 +64,25 @@
 
 <div class="row">
     <div class="form-horizontal">
-        <h3>New Starter Details </h3>
+        <h3>Approval of New Starter</h3>
         <div class="form-group">
-            <label for="txtUsername" class="col-sm-2 control-label">Username</label>
+            <label for="txtComments" class="col-sm-2 control-label">Comments</label>
             <div class="col-sm-10">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" />
+                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" Rows="3" TextMode="MultiLine" />
             </div>
         </div>
         <div class="form-group">
-            <label for="txtPassword" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-               <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" />
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-sm-offset-1 col-sm-11">
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Remember me
-                    </label>
+                    <asp:CheckBox ID="chkApprove" runat="server" Text="Authorize this new starter" />
                 </div>
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Sign in</button>
+            <div class="col-sm-offset-1 col-sm-11">
+                <asp:LinkButton ID="btnApprove" runat="server" Text="Approve" ResourceKey="ApproveStarter.Text" CssClass="btn btn-primary" OnClick="btnApprove_Click" />
+                
+                 <asp:LinkButton ID="btnDecline" runat="server" Text="Decline" ResourceKey="DeclineStarter.Text" CssClass="btn btn-warning" OnClick="btnDecline_Click" />
             </div>
         </div>
     </div>

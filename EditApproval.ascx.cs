@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Users;
@@ -20,6 +21,8 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
 using GND.Modules.HCM.Components;
 using DotNetNuke.Services.Exceptions;
+using DotNetNuke.Services.Social.Messaging;
+using DotNetNuke.Services.Social.Notifications;
 
 namespace GND.Modules.HCM
 {
@@ -74,6 +77,83 @@ namespace GND.Modules.HCM
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            var t = new Components.Starter();
+            var tc = new StarterController();
+            var a = new Components.Approval();
+            var ac = new ApprovalController();
+
+            if (ItemId > 0)
+            {
+                t = tc.GetStarter(ItemId, ModuleId);
+
+                a = new Components.Approval()
+                {
+                    StarterId = t.Id,
+                    StatusId = 2,
+                    Comment = "The starter " + t.FirstName + " " + t.LastName + " has just been approved, by " + UserController.GetCurrentUserInfo().DisplayName + ", " + txtComments.Text.Trim(),
+                    ModuleId = ModuleId,
+                    CreatedByUserId = UserId,
+                    CreatedOnDate = DateTime.Now,
+                    LastModifiedByUserId = UserId,
+                    LastModifiedOnDate = DateTime.Now,
+                    IsDeleted = false,
+                };
+
+                ac.CreateApproval(a);
+
+                Message message = new Message();
+                List<UserInfo> users = new List<UserInfo>();
+                users.Add(UserController.GetUserById(PortalId, t.CreatedByUserId));
+                message.Body = a.Comment;
+                message.Subject = "The starter " + t.FirstName + " " + t.LastName + " has just been approved by " +
+                                  UserController.GetCurrentUserInfo().DisplayName;
+                MessagingController.Instance.SendMessage(message, null, users, null, this.UserInfo);
+            }
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(), true);
+        }
+
+
+        protected void btnDecline_Click(object sender, EventArgs e)
+        {
+            var t = new Components.Starter();
+            var tc = new StarterController();
+            var a = new Components.Approval();
+            var ac = new ApprovalController();
+
+            if (ItemId > 0)
+            {
+                t = tc.GetStarter(ItemId, ModuleId);
+
+                a = new Components.Approval()
+                {
+                    StarterId = t.Id,
+                    StatusId = 3,
+                    Comment = "The starter " + t.FirstName + " " + t.LastName + " has just been declined, by " + UserController.GetCurrentUserInfo().DisplayName + ", " + txtComments.Text.Trim(),
+                    ModuleId = ModuleId,
+                    CreatedByUserId = UserId,
+                    CreatedOnDate = DateTime.Now,
+                    LastModifiedByUserId = UserId,
+                    LastModifiedOnDate = DateTime.Now,
+                    IsDeleted = false,
+                }
+                ;
+
+                ac.CreateApproval(a);
+
+                Message message = new Message();
+                List<UserInfo> users = new List<UserInfo>();
+                users.Add(UserController.GetUserById(PortalId, t.CreatedByUserId));
+                message.Body = a.Comment;
+                message.Subject = "The starter " + t.FirstName + " " + t.LastName + " has just been declined by " +
+                                  UserController.GetCurrentUserInfo().DisplayName;
+                MessagingController.Instance.SendMessage(message, null, users, null, this.UserInfo);
+            }
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL(), true);
+
         }
     }
 }

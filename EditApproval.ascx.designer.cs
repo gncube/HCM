@@ -85,21 +85,39 @@ namespace GND.Modules.HCM {
         protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// txtUsername control.
+        /// txtComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtComments;
         
         /// <summary>
-        /// txtPassword control.
+        /// chkApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.CheckBox chkApprove;
+        
+        /// <summary>
+        /// btnApprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnApprove;
+        
+        /// <summary>
+        /// btnDecline control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnDecline;
     }
 }
