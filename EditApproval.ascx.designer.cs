@@ -85,39 +85,57 @@ namespace GND.Modules.HCM {
         protected global::System.Web.UI.WebControls.TextBox txtEndDate;
         
         /// <summary>
-        /// txtUsername control.
+        /// txtComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtComments;
         
         /// <summary>
-        /// txtPassword control.
+        /// chkApprove control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
         /// btnSubmit control.
+=======
+        protected global::System.Web.UI.WebControls.CheckBox chkApprove;
+        
+        /// <summary>
+        /// btnApprove control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.LinkButton btnSubmit;
         
         /// <summary>
         /// btnCancel control.
+=======
+        protected global::System.Web.UI.WebControls.LinkButton btnApprove;
+        
+        /// <summary>
+        /// btnDecline control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.LinkButton btnCancel;
+=======
+        protected global::System.Web.UI.WebControls.LinkButton btnDecline;
+>>>>>>> origin/master
     }
 }

@@ -53,13 +53,17 @@
                     <asp:Label ID="lblLocation" runat="server"></asp:Label>
                 </td>
                 <td>
+<<<<<<< HEAD
                     <asp:Label ID="lblStartDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"StartDate", "{0:d}")!= null ? DataBinder.Eval(Container.DataItem,"StartDate", "{0:d}").ToString() : ""  %>' />
+=======
+                    <asp:Label ID="lblStartDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"StartDate")!= null ? DataBinder.Eval(Container.DataItem,"StartDate", "{0:d/M/yy}") : ""  %>' />
+>>>>>>> origin/master
                 </td>
 
                 <td>
                     <asp:HyperLink ID="lnkEdit" CssClass="btn btn-info btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="EditItem.Text" Visible="false" Enabled="false" />
                     <asp:HyperLink ID="lnkApprove" CssClass="btn btn-success btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="ApproveItem.Text" Visible="true" Enabled="false" />
-                    <asp:LinkButton ID="lnkDelete" CssClass="btn btn-danger btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="DeleteItem.Text" Visible="false" Enabled="false" CommandName="Delete" />
+                    <asp:LinkButton ID="lnkDelete" CssClass="btn btn-warning btn-xs" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"Id").ToString() %>' ResourceKey="DeleteItem.Text" Visible="false" Enabled="false" CommandName="Delete" />
 
                 </td>
             </tr>

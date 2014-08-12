@@ -36,7 +36,7 @@ namespace GND.Modules.HCM
     /// </summary>
     /// -----------------------------------------------------------------------------
 
-    public partial class Approvals : HCMModuleBase, IActionable
+    public partial class Approvals : HCMModuleBase
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,9 +50,5 @@ namespace GND.Modules.HCM
             }
         }
 
-        public ModuleActionCollection ModuleActions
-        {
-            get { throw new NotImplementedException(); }
-        }
     }
 }

@@ -117,8 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+<<<<<<< HEAD:App_LocalResources/EditApproval.ascx.resx
   <data name="btnCancel.Text" xml:space="preserve">
     <value>Cancel</value>
+=======
+  <data name="ApproveStarter.Text" xml:space="preserve">
+    <value>&lt;i class="fa fa-check"&gt;&lt;/i&gt; Approve</value>
+  </data>
+  <data name="lblUsername.Help" xml:space="preserve">
+    <value>Usernazme</value>
+>>>>>>> origin/master:App_LocalResources/EditApproval.resx
   </data>
   <data name="btnSubmit.Text" xml:space="preserve">
     <value>Submit</value>

@@ -64,6 +64,7 @@
 
 <div class="row">
     <div class="form-horizontal">
+<<<<<<< HEAD
         <h3>New Starter Details </h3>
         <fieldset>
             <div class="form-group">
@@ -77,6 +78,27 @@
                 <div class="col-sm-10">
                     <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" />
                 </div>
+=======
+        <h3>Approval of New Starter</h3>
+        <div class="form-group">
+            <label for="txtComments" class="col-sm-2 control-label">Comments</label>
+            <div class="col-sm-10">
+                <asp:TextBox ID="txtComments" runat="server" CssClass="form-control" Rows="3" TextMode="MultiLine" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-11">
+                <div class="checkbox">
+                    <asp:CheckBox ID="chkApprove" runat="server" Text="Authorize this new starter" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-11">
+                <asp:LinkButton ID="btnApprove" runat="server" Text="Approve" ResourceKey="ApproveStarter.Text" CssClass="btn btn-primary" OnClick="btnApprove_Click" />
+                
+                 <asp:LinkButton ID="btnDecline" runat="server" Text="Decline" ResourceKey="DeclineStarter.Text" CssClass="btn btn-warning" OnClick="btnDecline_Click" />
+>>>>>>> origin/master
             </div>
         </fieldset>
         <footer>
