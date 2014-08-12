@@ -94,6 +94,7 @@
     <Compile Include="Components\Department.cs" />
     <Compile Include="Components\DepartmentController.cs" />
     <Compile Include="Components\FeatureController.cs" />
+    <Compile Include="Components\Messaging.cs" />
     <Compile Include="Components\ItemController.cs" />
     <Compile Include="Components\Item.cs" />
     <Compile Include="Components\Location.cs" />
@@ -218,7 +219,7 @@
     <Content Include="App_LocalResources\Departments.ascx.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_LocalResources\EditApproval.resx">
+    <Content Include="App_LocalResources\EditApproval.ascx.resx">
       <LastGenOutput>EditApproval.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>

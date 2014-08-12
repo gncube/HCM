@@ -16,6 +16,7 @@ using System.Web.UI.WebControls;
 using DotNetNuke.Entities.Users;
 using DotNetNuke.Security.Roles;
 using DotNetNuke.Security.Roles.Internal;
+using DotNetNuke.Services.Journal;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.UI.UserControls;
 using GND.Modules.HCM.Components;
@@ -74,6 +75,53 @@ namespace GND.Modules.HCM
             {
                 Exceptions.ProcessModuleLoadException(this, exc);
             }
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            var t = new Components.Starter();
+            var tc = new StarterController();
+            var a = new Components.Approval();
+            var ac = new ApprovalController();
+
+            if (ItemId > 0)
+            {
+                t = tc.GetStarter(ItemId, ModuleId);
+
+                a = new Approval()
+                {
+                    Comment = txtUsername.Text.Trim() + ' ' + txtPassword.Text.Trim() + " had been approved by " + UserController.GetCurrentUserInfo().DisplayName,
+                    StarterId = t.Id,
+                    StatusId = 2,
+                    ModuleId = ModuleId,
+                    CreatedByUserId = UserId,
+                    CreatedOnDate = DateTime.Now,
+                    IsDeleted = false,
+                    LastModifiedByUserId = UserId,
+                    LastModifiedOnDate = DateTime.Now,
+                };
+
+                ac.CreateApproval(a);
+
+                Messaging.SendNotification("Notification subject", t.FirstName + " " + t.LastName + " has been approved by Lord.", UserController.GetUserById(PortalId, t.CreatedByUserId));
+
+                Messaging.SendNotification("Notification subject", t.FirstName + " " + t.LastName + " has been approved by Lord.", UserController.GetUserById(PortalId, t.AssignedUserId));
+
+                Messaging.SendMessage("New starter added to you", t.FirstName + " " + t.LastName + " has been approved by Lord.", UserController.GetUserById(PortalId, t.AssignedUserId));
+
+                Messaging.SendMessage("New starter added to you", t.FirstName + " " + t.LastName + " has been approved by Lord.", UserController.GetUserById(PortalId, t.CreatedByUserId));
+
+            }
+            else
+            {
+                
+            }
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(DotNetNuke.Common.Globals.NavigateURL());
         }
     }
 }

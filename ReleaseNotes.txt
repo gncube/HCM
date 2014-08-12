@@ -21,6 +21,7 @@
 	<h4>Bug Fixes</h4>
 	<ul>
 			<li>Sorted the error on categories</li>
+			<li>Added the settings module</li>
 	</ul>
 	
 </div>

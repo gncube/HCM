@@ -121,7 +121,8 @@ namespace GND.Modules.HCM
                 if (lnkApprove != null)
                 {
                     lnkApprove.Enabled = lnkApprove.Visible = true;
-                    lnkApprove.Text = t.Id.ToString();
+                    //lnkApprove.Text = t.Id.ToString();
+                    lnkApprove.Text = "Approve";
                     //lnkApprove.NavigateUrl = EditUrl(string.Empty, string.Empty, string.Empty, "tid=" + t.Id);
                     lnkApprove.NavigateUrl = EditUrl(string.Empty, string.Empty, "EditApproval", "tid=" + t.Id);
                 }

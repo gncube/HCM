@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="GND Software: HCM" type="Module" version="05.00.03">
+    <package name="GND Software: HCM" type="Module" version="05.00.04">
       <friendlyName>GND Software: HCM</friendlyName>
       <description>GND Software Ltd HCM module</description>
       <iconFile>Images/icon_extensions.gif</iconFile>

@@ -2,7 +2,7 @@
 
 
 <!-- uncomment the code below to start using the DNN Form pattern to create and update settings -->
-<%--  
+  
 
 <%@ Register TagName="label" TagPrefix="dnn" Src="~/controls/labelcontrol.ascx" %>
 
@@ -20,4 +20,3 @@
     </fieldset>
 
 
---%>

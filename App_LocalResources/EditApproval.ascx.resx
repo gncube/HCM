@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblUsername.Help" xml:space="preserve">
-    <value>Usernazme</value>
+  <data name="btnCancel.Text" xml:space="preserve">
+    <value>Cancel</value>
   </data>
-  <data name="lblUsername.Text" xml:space="preserve">
-    <value>Username</value>
+  <data name="btnSubmit.Text" xml:space="preserve">
+    <value>Submit</value>
   </data>
 </root>

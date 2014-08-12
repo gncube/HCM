@@ -7,7 +7,7 @@
     <div class="form-horizontal">
         <div class="col-sm-6">
             <div class="form-group">
-                <label class="col-sm-3 control-label">FirstName</label>
+                <label class="col-sm-3 control-label">First Name</label>
                 <div class="col-sm-9">
                     <asp:TextBox ID="txtFirstName" runat="server" CssClass="form-control" />
                 </div>
@@ -65,31 +65,25 @@
 <div class="row">
     <div class="form-horizontal">
         <h3>New Starter Details </h3>
-        <div class="form-group">
-            <label for="txtUsername" class="col-sm-2 control-label">Username</label>
-            <div class="col-sm-10">
-                <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="txtPassword" class="col-sm-2 control-label">Password</label>
-            <div class="col-sm-10">
-               <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" />
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox">
-                        Remember me
-                    </label>
+        <fieldset>
+            <div class="form-group">
+                <label for="txtUsername" class="col-sm-2 control-label">Username</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" />
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-success">Sign in</button>
+            <div class="form-group">
+                <label for="txtPassword" class="col-sm-2 control-label">Password</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" />
+                </div>
             </div>
-        </div>
+        </fieldset>
+        <footer>
+            <asp:LinkButton ID="btnSubmit" runat="server"
+                resourcekey="btnSubmit" CssClass="btn btn-success" OnClick="btnSubmit_Click" />
+            <asp:LinkButton ID="btnCancel" runat="server"
+                resourcekey="btnCancel" CssClass="btn btn-default" OnClick="btnCancel_Click" />
+        </footer>
     </div>
 </div>

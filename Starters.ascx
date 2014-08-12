@@ -6,11 +6,11 @@
     Add Starter
     </asp:HyperLink>
 
-    <asp:HyperLink type="button" class="btn btn-primary" ID="lnkCompleted">
+    <asp:HyperLink runat="server" CssClass="btn btn-primary" ID="lnkCompleted" Visible="False">
         <span class="glyphicon glyphicon-th-list"></span>
         Awaiting IT </asp:HyperLink>
     
-    <asp:HyperLink runat="server" CssClass="btn btn-warning" ID="lnkApprovals">
+    <asp:HyperLink runat="server" CssClass="btn btn-warning" ID="lnkApprovals" Visible="False">
         <span class="glyphicon glyphicon-tasks"></span>
         Pending Approvals
     </asp:HyperLink>
@@ -53,7 +53,7 @@
                     <asp:Label ID="lblLocation" runat="server"></asp:Label>
                 </td>
                 <td>
-                    <asp:Label ID="lblStartDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"StartDate")!= null ? DataBinder.Eval(Container.DataItem,"StartDate").ToString() : ""  %>' />
+                    <asp:Label ID="lblStartDate" runat="server" Text='<%#DataBinder.Eval(Container.DataItem,"StartDate", "{0:d}")!= null ? DataBinder.Eval(Container.DataItem,"StartDate", "{0:d}").ToString() : ""  %>' />
                 </td>
 
                 <td>

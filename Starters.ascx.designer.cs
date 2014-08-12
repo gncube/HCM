@@ -22,6 +22,15 @@ namespace GND.Modules.HCM {
         protected global::System.Web.UI.WebControls.HyperLink lnkNewStarter;
         
         /// <summary>
+        /// lnkCompleted control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkCompleted;
+        
+        /// <summary>
         /// lnkApprovals control.
         /// </summary>
         /// <remarks>
